@@ -23,20 +23,20 @@ Menu de interação com o usuário
 Resultado do arquivo texto carregado 
 ![Arvore 2](Images/Arvore-2.png)
 
-Exemplo de balanceamento após remoção:
+Exemplo de remoção
 ![Arvore 3](Images/Arvore-3.png)
 
 ### 🖼️ Visualização Gráfica (WPF)
 
-Visualização da árvore em tempo real:
+Visualização dos Comandos
 ![Arvore 4](Images/Arvore-4.png)
 
-Demonstração de árvore balanceada com múltiplos nós:
+Visualização dos Comandos 
 ![Arvore 5](Images/Arvore-5.png)
 
 ### 🌀 Animações (GIFs)
 
-Balanceamento após inserções:
+Balanceamento após inserções
 ![Arvore 6](Images/Arvore-6.gif)
 
 Visualização dinâmica 
@@ -53,4 +53,4 @@ Visualização dinâmica
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   git clone https://github.com/CarolineGrizante/TreeAVL-csharp.git
