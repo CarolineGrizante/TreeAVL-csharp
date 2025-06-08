@@ -15,7 +15,7 @@ Este projeto implementa uma **Árvore AVL (Adelson-Velsky and Landis)** em C#, u
 
 ## 📸 Imagens do Projeto
 
-### 👨‍💻 Console App
+### Console App
 
 *Menu de interação com o usuário*
 ![Arvore 1](Images/Arvore-1.png)
@@ -26,7 +26,7 @@ Este projeto implementa uma **Árvore AVL (Adelson-Velsky and Landis)** em C#, u
 *Exemplo de remoção*
 ![Arvore 3](Images/Arvore-3.png)
 
-### 🖼️ Visualização Gráfica (WPF)
+### Visualização Gráfica (WPF)
 
 *Visualização dos Comandos*
 
