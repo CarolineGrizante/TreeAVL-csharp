@@ -1,0 +1,272 @@
+﻿<Window x:Class="ArvoreInterface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArvoreInterface"
+        mc:Ignorable="d"
+        Title="Árvore AVL"
+        Height="720" Width="1100"
+        WindowStartupLocation="CenterScreen"
+        Background="#F4F7FC"
+        Icon="/Assets/Arvore.ico">
+
+    <Window.Resources>
+        <!-- Cores -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#4A90E2"/>
+        <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#357ABD"/>
+        <SolidColorBrush x:Key="SecondaryBrush" Color="#7ED321"/>
+        <SolidColorBrush x:Key="SecondaryHoverBrush" Color="#69B41C"/>
+        <SolidColorBrush x:Key="ErrorBrush" Color="#D0021B"/>
+        <SolidColorBrush x:Key="ErrorHoverBrush" Color="#A80115"/>
+
+        <SolidColorBrush x:Key="LightGrayBrush" Color="#EAEAEA"/>
+        <SolidColorBrush x:Key="MediumGrayBrush" Color="#CCCCCC"/>
+        <SolidColorBrush x:Key="DarkGrayBrush" Color="#555555"/>
+        <SolidColorBrush x:Key="TextBrush" Color="#333333"/>
+        <SolidColorBrush x:Key="LightTextBrush" Color="#FFFFFF"/>
+        
+        <!-- Texto branco para os botões -->
+        <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#D0D0D0"/>
+        <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888888"/>
+
+        <SolidColorBrush x:Key="CanvasBackgroundBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="NodeFillBrush" Color="#D6EAF8"/>
+        
+        <!-- Luz azul para os nós -->
+        <SolidColorBrush x:Key="NodeStrokeBrush" Color="#4A90E2"/>
+        
+        <!-- Azul primário para a borda dos nós -->
+        <SolidColorBrush x:Key="LineStrokeBrush" Color="#A9CCE3"/>
+       
+        <!-- Linha azul para as linhas -->
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <Style x:Key="TitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="8,5"/>
+            <Setter Property="BorderBrush" Value="{StaticResource MediumGrayBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="OutputTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Background" Value="#EFEFEF"/>
+            <Setter Property="BorderBrush" Value="{StaticResource LightGrayBrush}"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="180"/>
+        </Style>
+
+        <!-- Estilo do botão -->
+        <Style x:Key="BaseButtonStyle" TargetType="Button">
+            <Setter Property="MinWidth" Value="100"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource LightTextBrush}"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource PrimaryHoverBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource SecondaryBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource SecondaryHoverBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="DestructiveButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource ErrorBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource ErrorHoverBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Painel de Controle (Esquerda) -->
+        <Border Grid.Column="0" Background="#FFFFFF" CornerRadius="8" Padding="20" Margin="0,0,20,0">
+            <Border.Effect>
+                <DropShadowEffect Color="#CCCCCC" BlurRadius="10" ShadowDepth="1" Opacity="0.3"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Operações da Árvore AVL" Style="{StaticResource TitleTextStyle}"/>
+
+                <TextBlock Text="Inserir Valor:" Margin="0,0,0,5"/>
+                <Grid Margin="0,0,0,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="ValorTextBox" Grid.Column="0" Margin="0,0,10,0" ToolTip="Digite o valor inteiro"/>
+                    <Button x:Name="InserirButton" Content="Inserir" Grid.Column="1" Click="InserirButton_Click"/>
+                </Grid>
+
+                <TextBlock Text="Remover Valor:" Margin="0,0,0,5"/>
+                <Grid Margin="0,0,0,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="RemoverTextBox" Grid.Column="0" Margin="0,0,10,0" ToolTip="Digite o valor a remover"/>
+                    <Button x:Name="RemoverButton" Content="Remover" Grid.Column="1" Click="RemoverButton_Click" Style="{StaticResource DestructiveButtonStyle}"/>
+                </Grid>
+
+                <TextBlock Text="Buscar Valor:" Margin="0,0,0,5"/>
+                <Grid Margin="0,0,0,25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="BuscarTextBox" Grid.Column="0" Margin="0,0,10,0" ToolTip="Digite o valor a buscar"/>
+                    <Button x:Name="BuscarButton" Content="Buscar" Grid.Column="1" Click="BuscarButton_Click"/>
+                </Grid>
+
+                <TextBlock Text="Impressões e Verificações:" Style="{StaticResource TitleTextStyle}" Margin="0,10,0,10"/>
+                <WrapPanel Margin="0,0,0,15">
+                    <Button x:Name="InOrderButton" Content="InOrder" Margin="0,0,10,10" Click="InOrderButton_Click" Style="{StaticResource {x:Type Button}}"/>
+                    <Button x:Name="PreOrderButton" Content="PreOrder" Margin="0,0,10,10" Click="PreOrderButton_Click" Style="{StaticResource {x:Type Button}}"/>
+                    <Button x:Name="PosOrderButton" Content="PosOrder" Margin="0,0,10,10" Click="PosOrderButton_Click" Style="{StaticResource {x:Type Button}}"/>
+                    <Button x:Name="BalanceamentoButton" Content="Balanceamento" Margin="0,0,10,10" Click="BalanceamentoButton_Click" Style="{StaticResource {x:Type Button}}"/>
+                </WrapPanel>
+
+                <TextBlock Text="Resultados:" Margin="0,10,0,5"/>
+                <TextBox x:Name="ResultadoTextBox" Style="{StaticResource OutputTextBoxStyle}"/>
+
+                <!-- Usar Grid para melhor controle do alinhamento dos botões inferiores -->
+                <Grid Margin="0,25,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="CarregarDadosButton" Content="Carregar Dados" Grid.Column="0" HorizontalAlignment="Left" Click="CarregarDadosButton_Click" Style="{StaticResource SecondaryButtonStyle}"/>
+                    <Button x:Name="LimparArvoreButton" Content="Limpar Árvore" Grid.Column="1" HorizontalAlignment="Right" Click="LimparArvoreButton_Click" Style="{StaticResource DestructiveButtonStyle}"/>
+                </Grid>
+
+            </StackPanel>
+        </Border>
+
+        <!-- Painel de Visualização (Direita) -->
+        <Border Grid.Column="1" Background="{StaticResource CanvasBackgroundBrush}" CornerRadius="8" BorderBrush="{StaticResource LightGrayBrush}" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect Color="#CCCCCC" BlurRadius="10" ShadowDepth="1" Opacity="0.3"/>
+            </Border.Effect>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <!-- Definir Width/Height grandes permite scroll se a árvore crescer -->
+                <Canvas x:Name="ArvoreCanvas" Width="2000" Height="2000">
+                    <!-- Nós e linhas da árvore serão desenhados aqui via code-behind -->
+                </Canvas>
+            </ScrollViewer>
+        </Border>
+
+    </Grid>
+</Window>
