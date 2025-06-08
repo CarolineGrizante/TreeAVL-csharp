@@ -29,9 +29,11 @@ Exemplo de remoção
 ### 🖼️ Visualização Gráfica (WPF)
 
 Visualização dos Comandos
+
 ![Arvore 4](Images/Arvore-4.png)
 
 Visualização dos Comandos 
+
 ![Arvore 5](Images/Arvore-5.png)
 
 ### 🌀 Animações (GIFs)
