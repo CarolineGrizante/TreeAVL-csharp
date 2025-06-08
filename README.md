@@ -17,31 +17,31 @@ Este projeto implementa uma **Árvore AVL (Adelson-Velsky and Landis)** em C#, u
 
 ### 👨‍💻 Console App
 
-Menu de interação com o usuário
+*Menu de interação com o usuário*
 ![Arvore 1](Images/Arvore-1.png)
 
-Resultado do arquivo texto carregado 
+*Resultado do arquivo texto carregado* 
 ![Arvore 2](Images/Arvore-2.png)
 
-Exemplo de remoção
+*Exemplo de remoção*
 ![Arvore 3](Images/Arvore-3.png)
 
 ### 🖼️ Visualização Gráfica (WPF)
 
-Visualização dos Comandos
+*Visualização dos Comandos*
 
 ![Arvore 4](Images/Arvore-4.png)
 
-Visualização dos Comandos 
+*Visualização dos Comandos* 
 
 ![Arvore 5](Images/Arvore-5.png)
 
 ### 🌀 Animações (GIFs)
 
-Balanceamento após inserções
+*Balanceamento após inserções*
 ![Arvore 6](Images/Arvore-6.gif)
 
-Visualização dinâmica 
+*Visualização dinâmica* 
 ![Arvore 7](Images/Arvore-7.gif)
 
 ## 🛠️ Tecnologias Utilizadas
