@@ -17,10 +17,10 @@ Este projeto implementa uma **Árvore AVL (Adelson-Velsky and Landis)** em C#, u
 
 ### 👨‍💻 Console App
 
-Menu de interação com o usuário:
+Menu de interação com o usuário
 ![Arvore 1](Images/Arvore-1.png)
 
-Resultado de inserções:
+Resultado do arquivo texto carregado 
 ![Arvore 2](Images/Arvore-2.png)
 
 Exemplo de balanceamento após remoção:
@@ -36,10 +36,10 @@ Demonstração de árvore balanceada com múltiplos nós:
 
 ### 🌀 Animações (GIFs)
 
-Balanceamento automático após inserções:
+Balanceamento após inserções:
 ![Arvore 6](Images/Arvore-6.gif)
 
-Visualização dinâmica com múltiplos nós:
+Visualização dinâmica 
 ![Arvore 7](Images/Arvore-7.gif)
 
 ## 🛠️ Tecnologias Utilizadas
