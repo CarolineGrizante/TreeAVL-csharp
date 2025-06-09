@@ -38,7 +38,7 @@ Este projeto implementa uma **Árvore AVL (Adelson-Velsky and Landis)** em C#, u
 
 ### 🌀 Animações (GIFs)
 
-*Balanceamento após inserções*
+*Balanceamento após inserções* 
 ![Arvore 6](Images/Arvore-6.gif)
 
 *Visualização dinâmica* 
