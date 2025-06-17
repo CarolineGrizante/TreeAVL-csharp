@@ -1,4 +1,4 @@
-# 🌳 Projeto de Árvore AVL em C#
+# 🌳 Projeto Árvore AVL em C#
 
 Este projeto implementa uma **Árvore AVL (Adelson-Velsky and Landis)** em C#, utilizando uma abordagem modular com dois projetos:
 - **Class Library**: Contém a lógica da árvore AVL.
